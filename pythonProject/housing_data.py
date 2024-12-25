@@ -1,15 +1,15 @@
 import pandas as pd
 import warnings
-warnings.simplefilter('ignore')
+
+warnings.simplefilter("ignore")
 from sklearn.datasets import fetch_openml
 
-    """_summary_
-    """# load dataset
+# load dataset
 housing = fetch_openml(name="house_prices", as_frame=True)
 df_housing = pd.DataFrame(data=housing.data, columns=housing.feature_names)
 
 # add target
-df_housing['SalePrice'] = housing.target
+df_housing["SalePrice"] = housing.target
 
 # save dataset
 df_housing.to_csv("data/ame_housing_data.csv", index=None)
