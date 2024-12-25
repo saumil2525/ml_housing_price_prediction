@@ -6,6 +6,7 @@ import warnings
 
 warnings.simplefilter("ignore")
 
+
 def impute_values(df, num_fillna="mean"):
     df_nulls = pd.DataFrame(df.isnull().sum(), columns=["count_val"])
     for col in df_nulls[df_nulls.count_val > 0].index.to_list():
@@ -20,9 +21,12 @@ def impute_values(df, num_fillna="mean"):
         else:
             # most recurring values
             df[col] = df[col].fillna(df[col].mode().iloc[0])
-    print(f"\nImputed numerical missing values with {num_fillna} and categorical missing values with 'most frequent value'")
+    print(
+        f"\nImputed numerical missing values with {num_fillna} and categorical missing values with 'most frequent value'"
+    )
 
     return df
+
 
 def feature_types(df):
     cat_features = [col for col in df.columns if df[col].dtype == "object"]
@@ -35,8 +39,11 @@ def feature_types(df):
     )
     return cat_features, num_features
 
+
 def one_hot_encoding(df, cat_features):
+
     from sklearn.preprocessing import OneHotEncoder
+
     # Initialize
     encoder = OneHotEncoder(sparse_output=False)
     # Fit and transform
@@ -50,6 +57,7 @@ def one_hot_encoding(df, cat_features):
     print(f"\nShape of the df after impute: {df_encoded.shape}")
     return df_encoded
 
+
 def corr_with_target(df, threshold_corr=0.5, target_col="prices"):
     df_corr = pd.DataFrame(
         data=df.drop(target_col, axis=1).corrwith(df[target_col])
@@ -61,6 +69,7 @@ def corr_with_target(df, threshold_corr=0.5, target_col="prices"):
     df_final = pd.concat([df[features_threshold_corr], df[target_col]], axis=1)
     return df_final, features_threshold_corr
 
+
 def plot_corr_with_target(df, target_col):
     for ind, col in enumerate(df.drop(target_col, axis=1).columns):
         plt_title = f"{col} vs {target_col}"
@@ -70,6 +79,8 @@ def plot_corr_with_target(df, target_col):
         plt.title(plt_title)
         plt.scatter(df[col], df[target_col])
         plt.savefig(plt_name)
+        plt.close()
+
 
 def write_df_info(df):
     buffer = io.StringIO()
@@ -79,6 +90,7 @@ def write_df_info(df):
         f.write(s)
     print("\ndf info written to 'eda' directory")
 
+
 def plot_correlation(df):
     # heatmap
     plt_name = f"plots/heatmap.png"
@@ -86,6 +98,7 @@ def plot_correlation(df):
     fig.set_size_inches(18, 8)  # Set the size in inches
     sns.heatmap(df.corr(), annot=True)
     plt.savefig(plt_name)
+    plt.close()
     # pair plot
     plt_name = f"plots/pairplot.png"
     fig = plt.gcf()  # Get the current figure
@@ -93,14 +106,19 @@ def plot_correlation(df):
     sns.pairplot(df)
     plt.savefig(plt_name)
     # plt.show()
+    plt.close()
+
 
 def get_null_cols(df):
-    df_nulls = pd.DataFrame(df.isnull().sum(), columns=['count_val'])
+    df_nulls = pd.DataFrame(df.isnull().sum(), columns=["count_val"])
     df_nulls = df_nulls[df_nulls.count_val > 0]
     if df_nulls.shape[0] > 0:
-        print(f"\nNumber of columns with nulls: {df_nulls[df_nulls.count_val > 0].shape[0]}")
+        print(
+            f"\nNumber of columns with nulls: {df_nulls[df_nulls.count_val > 0].shape[0]}"
+        )
     else:
         print("\nNo missing values")
+
 
 def describe_features(df, cat_features, num_features):
     file_path = "eda/02_describe_categorical_feature.csv"

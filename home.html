@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Boston House Price Prediction</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <input type="text" name="YearBuilt" placeholder="YearBuilt" required="required" /><br>
+    	<input type="text" name="YearRemodAdd" placeholder="YearRemodAdd" required="required" /><br>
+        <input type="text" name="TotalBsmtSF" placeholder="TotalBsmtSF" required="required" /><br>
+        <input type="text" name="1stFlrSF" placeholder="1stFlrSF" required="required" /><br>
+        <input type="text" name="GrLivArea" placeholder="GrLivArea" required="required" /><br>
+        <input type="text" name="FullBath" placeholder="FullBath" required="required" /><br>
+        <input type="text" name="TotRmsAbvGrd" placeholder="TotRmsAbvGrd" required="required" /><br>
+        <input type="text" name="GarageCars" placeholder="GarageCars" required="required" /><br>
+        <input type="text" name="GarageArea" placeholder="GarageArea" required="required" /><br>
+        <input type="text" name="ExterQual_TA" placeholder="ExterQual_TA" required="required" /><br>
+        <input type="text" name="BsmtQual_Ex" placeholder="BsmtQual_Ex" required="required" /><br>
+        <input type="text" name="KitchenQual_Ex" placeholder="KitchenQual_Ex" required="required" /><br>
+        <input type="text" name="KitchenQual_TA" placeholder="KitchenQual_TA" required="required" /><br>
+        <input type="text" name="GarageFinish_Unf" placeholder="GarageFinish_Unf" required="required" /><br>
+
+
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+
+
+ </div>
+ {{prediction_text}}
+
+</body>
+</html>
+
+YearBuilt
+YearRemodAdd
+TotalBsmtSF
+1stFlrSF
+GrLivArea
+FullBath
+TotRmsAbvGrd
+GarageCars
+GarageArea
+ExterQual_TA
+BsmtQual_Ex
+KitchenQual_Ex
+KitchenQual_TA
+GarageFinish_Unf

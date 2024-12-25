@@ -1,0 +1,19 @@
+{
+  "data": {
+    "OverallQual": 7,
+    "YearBuilt": 2003,
+    "YearRemodAdd": 2003,
+    "TotalBsmtSF": 856,
+    "1stFlrSF": 856,
+    "GrLivArea": 1710,
+    "FullBath": 2,
+    "TotRmsAbvGrd": 8,
+    "GarageCars": 2,
+    "GarageArea": 548,
+    "ExterQual_TA": 0,
+    "BsmtQual_Ex": 0,
+    "KitchenQual_Ex": 0,
+    "KitchenQual_TA": 0,
+    "GarageFinish_Unf": 0
+  }
+}

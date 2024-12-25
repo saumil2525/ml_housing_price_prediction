@@ -3,7 +3,8 @@ import warnings
 warnings.simplefilter('ignore')
 from sklearn.datasets import fetch_openml
 
-# load dataset
+    """_summary_
+    """# load dataset
 housing = fetch_openml(name="house_prices", as_frame=True)
 df_housing = pd.DataFrame(data=housing.data, columns=housing.feature_names)
 
